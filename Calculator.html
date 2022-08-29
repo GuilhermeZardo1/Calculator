@@ -1,0 +1,52 @@
+﻿<!DOCTYPE html>
+<html>
+<html lang="en">
+<head>
+    <title>Calculator</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Lora:400,400i,700,700i&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Amatic+SC:400,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400" rel="stylesheet" type="text/css">
+    <script src="script.js"></script>
+</head>
+<body>
+  <h1> Javascript Calculator </h1>
+  <form name="calculator" id="container">
+      <tr>
+          <td>
+              <input type="text" name="display" id="display" value="0" disabled>
+          </td>
+      </tr>
+
+      <table>
+          <tr>
+              <td><input type="button" onclick="updateDisplay(this.value)" id="number" name="one" value="1"></td>
+              <td><input type="button" onclick="updateDisplay(this.value)" name="two" id="number" value="2"></td>
+              <td><input type="button" onclick="updateDisplay(this.value)" name="three" id="number" value="3"></td>
+              <td><input type="button" onclick="updateDisplay(this.value)" class="operator" id="operator" name="plus" value="+"></td>
+          </tr>
+          <tr>
+              <td><input type="button" onclick="updateDisplay(this.value)" name="four" id="number" value="4"></td>
+              <td><input type="button" onclick="updateDisplay(this.value)"  name="five" id="number" value="5"></td>
+              <td><input type="button" onclick="updateDisplay(this.value)" name="six" id="number" value="6"></td>
+              <td><input type="button" onclick="updateDisplay(this.value)" class="operator" id="operator" name="minus" value="-"></td>
+          </tr>
+          <tr>
+              <td><input type="button" onclick="updateDisplay(this.value)" name="seven" id="number" value="7"></td>
+              <td><input type="button" onclick="updateDisplay(this.value)" name="eight" id="number" value="8"></td>
+              <td><input type="button" onclick="updateDisplay(this.value)" name="nine" id="number" value="9"></td>
+              <td><input type="button" onclick="updateDisplay(this.value)" class="operator" id="operator" name="times" value="*"></td>
+          </tr>
+          <tr>
+              <td><input type="button" onclick="clearScreen()" name="C" id="C" value="C"></td>
+              <td><input type="button" onclick="updateDisplay(this.value)" name="zero" id="number" value="0"></td>
+              <td><input type="button" onclick="doTheMath()" name="equal" id="operator" value="="></td>
+              <td><input type="button" onclick="updateDisplay(this.value)" class="operator" id="operator" name="divide" value="/"></td>
+          </tr>
+      </table>
+  </form>
+</body>
+</html>
