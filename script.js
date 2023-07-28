@@ -1,53 +1,42 @@
-// JavaScript source code
+let n1, operator, n2;
 
-//variable declarator
-
-var operator, partial, operator, result;
-operator = null;
-
-
-/*update the display of the calculator. If zero is displayed when clicked, display the clicked value,
-if it is not zero, concatenate the clicked value to the display and save the partial result to be
-used later*/
-
-
-function updateDisplay(clicked) {
-
-    if (document.getElementById("display").value == "0") {
-
-     document.getElementById("display").value = clicked;
-     partial = document.getElementById("display").value;
-
-    } else if (document.getElementById("display").value != "0") {
-       
-   	 document.getElementById("display").value = document.getElementById("display").value.concat(clicked);
-	 partial = document.getElementById("display").value;
-   
-	}
+function add(n1,n2){
+	return n1+n2;
 }
 
-/*function to clear the screen*/
+function multiply(n1,n2){
+	return n1*n2;
+}
 
-function clearScreen(){
+function subtract(n1,n2){
+	return n1-n2;
+}
 
-	document.getElementById("display").value = "0";
-	partial = null;
+function divide(n1,n2){
+	return n1/n2;
+}
+
+function operate(op, n1, n2){
+
+	switch (op) {
+
+		case 'add':
+			return add(n1,n2);
+		case 'subtract':
+			return subtract(n1,n2);
+		case 'multiply':
+			return subtract(n1,n2);
+		case 'divide':
+			return divide(n1,n2);
+		default:
+		  return "ERROR";
+	  }
 
 }
 
-/* function dedicated to evaluate the result by using the values
-stored in the partial variable.*/
 
-function doTheMath () {
 
-	if(document.getElementById("display").value != "0") {
-	result = eval(partial);
-	console.log(partial);
-	document.getElementById("display").value = result;
-	
-	}
 
-}
 
 
 
