@@ -1,40 +1,100 @@
-let n1, operator, n2;
+let n1, op, n2;
+partial=0;
+flag=false;
+
+n1=5;
+n2=7;
+
+function operatorFunction(op){
+	op=op;
+	if (flag==false){
+		n1=partial;
+		flag=true;
+		document.getElementById("display").value = "0";
+	}
+	else{
+		n2=partial;
+		flag=false;
+		document.getElementById("display").value = doTheMath(op, n1, n2);
+	}
+}
 
 function add(n1,n2){
-	return n1+n2;
+	n1=Number(n1);
+	n2=Number(n2);
+	let res= n1+n2
+	res=res.toString();
+	return res.toString();
 }
 
 function multiply(n1,n2){
-	return n1*n2;
+	n1=Number(n1);
+	n2=Number(n2);
+	let res= n1*n2
+	return res.toString();
 }
 
 function subtract(n1,n2){
-	return n1-n2;
+	n1=Number(n1);
+	n2=Number(n2);
+	let res= n1-n2
+	return res.toString();
 }
 
 function divide(n1,n2){
-	return n1/n2;
+	n1=Number(n1);
+	n2=Number(n2);
+	let res= n1/n2
+	return res.toString();
 }
 
-function operate(op, n1, n2){
+function doTheMath(op, n1, n2){
 
 	switch (op) {
-
-		case 'add':
+		case '+':
 			return add(n1,n2);
-		case 'subtract':
+		case '-':
 			return subtract(n1,n2);
-		case 'multiply':
+		case '*':
 			return subtract(n1,n2);
-		case 'divide':
+		case '/':
 			return divide(n1,n2);
 		default:
 		  return "ERROR";
 	  }
+}
 
+function updateDisplay(clicked) {
+
+		if (document.getElementById("display").value == "0") {
+			document.getElementById("display").value = clicked;
+			partial = document.getElementById("display").value;
+		} else  {
+			document.getElementById("display").value = "" + document.getElementById("display").value + clicked;
+			partial = document.getElementById("display").value;
+		}
+}
+function operatorFunction(op){
+		n1=partial;
+		document.getElementById("display").value = "0";
+}
+
+function result(){
+	n2=document.getElementById("display").value;
+	document.getElementById("display").value = doTheMath(op,n1,n2)
 }
 
 
+/*n1=5;
+n2=7;
+let a=add(n1,n2);
+console.log(a);
+let b=subtract(n1,n2);
+console.log(b);
+let c=multiply(n1,n2);
+console.log(c);
+let d=divide(n1,n2);
+console.log(d);*/
 
 
 
