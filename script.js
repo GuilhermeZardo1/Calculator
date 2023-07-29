@@ -1,6 +1,8 @@
 let n1, oper, n2;
 partial=0;
-flag=false;
+flagOperator=false;
+flagResult=false;
+flagNotFirstOperator=false;
 /*
 n1=5;
 n2=7;
@@ -56,8 +58,6 @@ function divide(n1,n2){
 }
 
 function doTheMath(op, n1, n2){
-	
-
 	switch (op) {
 		case '+':
 			return add(n1,n2);
@@ -74,9 +74,9 @@ function doTheMath(op, n1, n2){
 
 function updateDisplay(clicked) {
 
-		if(flag==true){
+		if(flagOperator==true){
 			document.getElementById("display").value = clicked;
-			flag=false;
+			flagOperator=false;
 			return;
 		}
 	
@@ -91,14 +91,27 @@ function updateDisplay(clicked) {
 	}
 	
 function operatorFunction(op){
-		oper=op;
-		n1=document.getElementById("display").value;
-		flag=true;
+		
+			oper=op;
+			n1=document.getElementById("display").value;
+			flagOperator=true;
+			flagResult=false;
+			
+	
 }
 
 function result(){
-	n2=document.getElementById("display").value;
-	document.getElementById("display").value = doTheMath(oper,n1,n2);
+
+	if (flagResult==false){
+		n2=document.getElementById("display").value;
+		document.getElementById("display").value = doTheMath(oper,n1,n2);
+		flagResult=true;
+	}
+	else{
+		n1=document.getElementById("display").value;
+		document.getElementById("display").value = doTheMath(oper,n1,n2);
+	}
+	
 }
 
 function clearScreen(){
@@ -106,7 +119,9 @@ function clearScreen(){
 	n1=0;
 	n2=0
 	op=0;
-	flag=false;
+	flagOperator=false;
+	flagResult=false;
+	
 }
 
 /*n1=5;
