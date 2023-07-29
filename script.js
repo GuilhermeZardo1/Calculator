@@ -1,10 +1,11 @@
-let n1, op, n2;
+let n1, oper, n2;
 partial=0;
 flag=false;
-
+/*
 n1=5;
 n2=7;
-
+*/
+/*
 function operatorFunction(op){
 	op=op;
 	if (flag==false){
@@ -17,13 +18,13 @@ function operatorFunction(op){
 		flag=false;
 		document.getElementById("display").value = doTheMath(op, n1, n2);
 	}
-}
+}*/
 
 function add(n1,n2){
 	n1=Number(n1);
 	n2=Number(n2);
 	let res= n1+n2
-	res=res.toString();
+	res = +res.toFixed(6);
 	return res.toString();
 }
 
@@ -31,6 +32,7 @@ function multiply(n1,n2){
 	n1=Number(n1);
 	n2=Number(n2);
 	let res= n1*n2
+	res = +res.toFixed(6);
 	return res.toString();
 }
 
@@ -38,17 +40,23 @@ function subtract(n1,n2){
 	n1=Number(n1);
 	n2=Number(n2);
 	let res= n1-n2
+	res = +res.toFixed(6);
 	return res.toString();
 }
 
 function divide(n1,n2){
 	n1=Number(n1);
-	n2=Number(n2);
+	n2=Number(n2);	
+	if (n2==0){
+		return "CANT DIVIDE BY ZERO";
+	}
 	let res= n1/n2
+	res = +res.toFixed(6);
 	return res.toString();
 }
 
 function doTheMath(op, n1, n2){
+	
 
 	switch (op) {
 		case '+':
@@ -56,7 +64,7 @@ function doTheMath(op, n1, n2){
 		case '-':
 			return subtract(n1,n2);
 		case '*':
-			return subtract(n1,n2);
+			return multiply(n1,n2);
 		case '/':
 			return divide(n1,n2);
 		default:
@@ -66,24 +74,40 @@ function doTheMath(op, n1, n2){
 
 function updateDisplay(clicked) {
 
+		if(flag==true){
+			document.getElementById("display").value = clicked;
+			flag=false;
+			return;
+		}
+	
 		if (document.getElementById("display").value == "0") {
 			document.getElementById("display").value = clicked;
-			partial = document.getElementById("display").value;
-		} else  {
-			document.getElementById("display").value = "" + document.getElementById("display").value + clicked;
-			partial = document.getElementById("display").value;
 		}
-}
+	
+		else  {
+			document.getElementById("display").value = "" + 
+			document.getElementById("display").value + clicked;
+		}
+	}
+	
 function operatorFunction(op){
-		n1=partial;
-		document.getElementById("display").value = "0";
+		oper=op;
+		n1=document.getElementById("display").value;
+		flag=true;
 }
 
 function result(){
 	n2=document.getElementById("display").value;
-	document.getElementById("display").value = doTheMath(op,n1,n2)
+	document.getElementById("display").value = doTheMath(oper,n1,n2);
 }
 
+function clearScreen(){
+	document.getElementById("display").value = '0';
+	n1=0;
+	n2=0
+	op=0;
+	flag=false;
+}
 
 /*n1=5;
 n2=7;
